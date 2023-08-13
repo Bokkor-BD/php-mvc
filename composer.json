@@ -1,0 +1,15 @@
+{
+  "name": "absiddik/phpmvc",
+  "authors": [
+    {
+      "name": "Abu Bokkor Siddik",
+      "email": "absiddik46@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "app\\": "./"
+    }
+  },
+  "require": {}
+}
