@@ -5,6 +5,14 @@ use app\core\Application;
 
 class Controller
 {
+
+    public string $layout = 'main';
+    public string $errLayout = '_404';
+    public function setLayout($layout)
+    {
+        $this->layout = $layout;
+    }
+
     public function render($view, $params = [])
     {
         return Application::$app->router->renderView($view, $params);

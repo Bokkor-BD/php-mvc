@@ -38,7 +38,8 @@ class Router
         }
 
         if (is_array($callback)) {
-            $callback[0] = new $callback[0];
+            Application::$app->controller = new $callback[0];
+            $callback[0] = Application::$app->controller;
         }
 
         return call_user_func($callback, $this->request);
@@ -53,8 +54,9 @@ class Router
 
     protected function layoutView()
     {
+        $layout = Application::$app->controller->layout;
         ob_start();
-        require_once Application::$ROOT_DIR . "/views/layouts/main.php";
+        require_once Application::$ROOT_DIR . "/views/layouts/$layout.php";
         return ob_get_clean();
     }
 
@@ -63,6 +65,7 @@ class Router
         foreach ($params as $key => $value) {
             $$key = $value;
         }
+
         ob_start();
         require_once Application::$ROOT_DIR . "/views/$view.php";
         return ob_get_clean();
